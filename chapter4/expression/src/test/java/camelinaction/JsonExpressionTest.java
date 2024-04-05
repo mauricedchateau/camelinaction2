@@ -3,7 +3,7 @@ package camelinaction;
 import org.apache.camel.Exchange;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test to demonstrate using bean as expressions during routing
@@ -30,7 +30,7 @@ public class JsonExpressionTest extends CamelTestSupport {
         // store the order as a file which is picked up by the route
         template.sendBodyAndHeader("file://target/order", json, Exchange.FILE_NAME, "order.json");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
     @Test
@@ -47,7 +47,7 @@ public class JsonExpressionTest extends CamelTestSupport {
         // store the order as a file which is picked up by the route
         template.sendBodyAndHeader("file://target/order", json, Exchange.FILE_NAME, "order.json");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
     @Override

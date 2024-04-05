@@ -8,7 +8,7 @@ import org.apache.camel.Processor;
 import org.apache.camel.builder.NotifyBuilder;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * How to concurrent process files using threads EIP

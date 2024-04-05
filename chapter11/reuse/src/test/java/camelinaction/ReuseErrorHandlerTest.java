@@ -5,7 +5,7 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.impl.JndiRegistry;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Showing how to reuse error handler from a base route builder class
@@ -41,7 +41,7 @@ public class ReuseErrorHandlerTest extends CamelTestSupport {
 
         template.sendBodyAndHeader("file://target/orders", "amount=1#name=Camel in Action", Exchange.FILE_NAME, "order.txt");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
     @Test
@@ -62,7 +62,7 @@ public class ReuseErrorHandlerTest extends CamelTestSupport {
         // wait 5 seconds to let this test run
         Thread.sleep(5000);
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
     @Test
@@ -84,7 +84,7 @@ public class ReuseErrorHandlerTest extends CamelTestSupport {
         // wait 5 seconds to let this test run
         Thread.sleep(5000);
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
     @Override

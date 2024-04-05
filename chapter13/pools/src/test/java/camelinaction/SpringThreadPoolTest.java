@@ -2,8 +2,8 @@ package camelinaction;
 
 import java.util.concurrent.ExecutorService;
 
-import org.apache.camel.test.spring.CamelSpringTestSupport;
-import org.junit.Test;
+import org.apache.camel.test.spring.junit5.CamelSpringTestSupport;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.support.AbstractXmlApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -23,7 +23,7 @@ public class SpringThreadPoolTest extends CamelSpringTestSupport {
 
         template.sendBody("direct:start", "Hello Camel");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
 }

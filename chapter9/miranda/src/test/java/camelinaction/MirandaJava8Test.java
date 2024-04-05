@@ -5,7 +5,7 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.apache.camel.util.StringHelper;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Unit test to simulate a real component by mocking a TCP server called miranda.
@@ -28,7 +28,7 @@ public class MirandaJava8Test extends CamelTestSupport {
         String out = fluentTemplate.to("http://localhost:9080/service/order?id=123").request(String.class);
         assertEquals("IN PROGRESS", out);
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
     @Override

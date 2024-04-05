@@ -2,7 +2,7 @@ package camelinaction;
 
 import org.apache.camel.RoutesBuilder;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Basic test using camel-test for testing a standalone Camel route

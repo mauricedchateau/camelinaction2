@@ -1,7 +1,7 @@
 package camelinaction;
 
-import org.apache.camel.test.spring.CamelSpringTestSupport;
-import org.junit.Test;
+import org.apache.camel.test.spring.junit5.CamelSpringTestSupport;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.support.AbstractXmlApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -28,7 +28,7 @@ public class SpringRoutingSlipHeaderTest extends CamelSpringTestSupport {
         // send the incoming message
         template.sendBody("direct:start", "Hello World");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
     @Test
@@ -40,7 +40,7 @@ public class SpringRoutingSlipHeaderTest extends CamelSpringTestSupport {
 
         template.sendBody("direct:start", "We are Cool");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
 }

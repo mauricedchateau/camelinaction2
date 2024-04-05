@@ -8,7 +8,7 @@ import org.apache.camel.util.jsse.KeyManagersParameters;
 import org.apache.camel.util.jsse.KeyStoreParameters;
 import org.apache.camel.util.jsse.SSLContextParameters;
 import org.apache.camel.util.jsse.TrustManagersParameters;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class GlobalSSLContextParametersTest extends CamelTestSupport {
     

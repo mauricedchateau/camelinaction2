@@ -1,7 +1,7 @@
 package camelinaction;
 
 import org.junit.Assert;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test of basic hystrix command in pure Java with fallback

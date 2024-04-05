@@ -7,7 +7,7 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.processor.aggregate.GroupedExchangeAggregationStrategy;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * The ABC example for using the Aggregator EIP.
@@ -38,7 +38,7 @@ public class AggregateABCGroupTest extends CamelTestSupport {
         template.sendBodyAndHeader("direct:start", "F", "myId", 2);
         template.sendBodyAndHeader("direct:start", "C", "myId", 1);
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
 
         // get the published exchange
         Exchange exchange = mock.getExchanges().get(0);

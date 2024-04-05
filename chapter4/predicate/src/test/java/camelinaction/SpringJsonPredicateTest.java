@@ -1,8 +1,8 @@
 package camelinaction;
 
 import org.apache.camel.Exchange;
-import org.apache.camel.test.spring.CamelSpringTestSupport;
-import org.junit.Test;
+import org.apache.camel.test.spring.junit5.CamelSpringTestSupport;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.support.AbstractXmlApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -34,7 +34,7 @@ public class SpringJsonPredicateTest extends CamelSpringTestSupport {
         // store the order as a file which is picked up by the route
         template.sendBodyAndHeader("file://target/order", json, Exchange.FILE_NAME, "order.json");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
     @Test
@@ -49,7 +49,7 @@ public class SpringJsonPredicateTest extends CamelSpringTestSupport {
         // store the order as a file which is picked up by the route
         template.sendBodyAndHeader("file://target/order", json, Exchange.FILE_NAME, "order.json");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
 }

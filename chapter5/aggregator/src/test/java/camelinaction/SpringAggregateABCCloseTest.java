@@ -3,8 +3,8 @@ package camelinaction;
 import org.apache.camel.CamelExecutionException;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.processor.aggregate.ClosedCorrelationKeyException;
-import org.apache.camel.test.spring.CamelSpringTestSupport;
-import org.junit.Test;
+import org.apache.camel.test.spring.junit5.CamelSpringTestSupport;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.support.AbstractXmlApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -47,7 +47,7 @@ public class SpringAggregateABCCloseTest extends CamelSpringTestSupport {
             assertEquals("1", cause.getCorrelationKey());
         }
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
 }

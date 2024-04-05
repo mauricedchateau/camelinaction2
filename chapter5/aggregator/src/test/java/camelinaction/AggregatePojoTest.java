@@ -4,7 +4,7 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.apache.camel.util.toolbox.AggregationStrategies;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * The ABC example for using the Aggregator EIP.
@@ -37,7 +37,7 @@ public class AggregatePojoTest extends CamelTestSupport {
         // and the Aggregator should publish the message
         template.sendBodyAndHeader("direct:start", "C", "myId", 1);
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
     @Override

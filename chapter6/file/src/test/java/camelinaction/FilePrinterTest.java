@@ -2,7 +2,7 @@ package camelinaction;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class FilePrinterTest extends CamelTestSupport {
 
@@ -12,7 +12,7 @@ public class FilePrinterTest extends CamelTestSupport {
  
         // should have one incoming message since there is one file in data/inbox
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
     @Override

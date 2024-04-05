@@ -1,13 +1,13 @@
 package camelinaction;
 
-import javax.jms.ConnectionFactory;
-
+import jakarta.jms.ConnectionFactory;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.camel.CamelContext;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.jms.JmsComponent;
-import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Test;
+import org.apache.camel.component.mock.MockEndpoint;
+import org.apache.camel.test.junit5.CamelTestSupport;
+import org.junit.jupiter.api.Test;
 
 public class OrderRouterOtherwiseTest extends CamelTestSupport {
 
@@ -17,7 +17,7 @@ public class OrderRouterOtherwiseTest extends CamelTestSupport {
         CamelContext camelContext = super.createCamelContext();
         
         // connect to embedded ActiveMQ JMS broker
-        ConnectionFactory connectionFactory = 
+        ConnectionFactory connectionFactory =
             new ActiveMQConnectionFactory("vm://localhost");
         camelContext.addComponent("jms",
             JmsComponent.jmsComponentAutoAcknowledge(connectionFactory));
@@ -31,7 +31,7 @@ public class OrderRouterOtherwiseTest extends CamelTestSupport {
         getMockEndpoint("mock:csv").expectedMessageCount(2);
         getMockEndpoint("mock:bad").expectedMessageCount(1);
         
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
     
     @Override

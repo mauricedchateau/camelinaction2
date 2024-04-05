@@ -4,7 +4,7 @@ import org.apache.camel.Exchange;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 // TODO: make this testing easier with camel-cdi, a new camel-test-cdi module is in the works
 @Ignore

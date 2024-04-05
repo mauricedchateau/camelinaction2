@@ -6,8 +6,8 @@ import javax.persistence.EntityManager;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.jpa.JpaEndpoint;
 import org.apache.camel.component.mock.MockEndpoint;
-import org.apache.camel.test.spring.CamelSpringTestSupport;
-import org.junit.Test;
+import org.apache.camel.test.spring.junit5.CamelSpringTestSupport;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -25,7 +25,7 @@ public class JpaTest extends CamelSpringTestSupport {
         
         template.sendBody("seda:accounting", purchaseOrder);
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
         assertEntityInDB();
     }
 

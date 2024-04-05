@@ -5,7 +5,7 @@ import java.util.concurrent.TimeoutException;
 import org.apache.camel.RoutesBuilder;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Hystrix using timeout with Java DSL

@@ -5,7 +5,7 @@ import java.util.concurrent.ExecutorService;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.builder.ThreadPoolBuilder;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Demonstrates how to use a custom thread pool with the WireTap EIP pattern.
@@ -19,7 +19,7 @@ public class WireTapTest extends CamelTestSupport {
 
         template.sendBody("direct:start", "Hello Camel");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
     @Override

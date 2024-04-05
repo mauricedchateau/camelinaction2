@@ -1,8 +1,8 @@
 package camelinaction;
 
 import org.apache.camel.component.mock.MockEndpoint;
-import org.apache.camel.test.spring.CamelSpringTestSupport;
-import org.junit.Test;
+import org.apache.camel.test.spring.junit5.CamelSpringTestSupport;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.support.AbstractXmlApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -28,7 +28,7 @@ public class SpringAggregateABCTest extends CamelSpringTestSupport {
         template.sendBodyAndHeader("direct:start", "F", "myId", 2);
         template.sendBodyAndHeader("direct:start", "C", "myId", 1);
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
 }

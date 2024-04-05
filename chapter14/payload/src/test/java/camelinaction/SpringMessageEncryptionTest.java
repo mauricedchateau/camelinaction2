@@ -4,9 +4,9 @@ import java.security.Key;
 import java.security.KeyStore;
 
 import org.apache.camel.Exchange;
-import org.apache.camel.test.spring.CamelSpringTestSupport;
+import org.apache.camel.test.spring.junit5.CamelSpringTestSupport;
 import org.apache.camel.util.jsse.KeyStoreParameters;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.support.AbstractXmlApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -34,7 +34,7 @@ public class SpringMessageEncryptionTest extends CamelSpringTestSupport {
 
         template.sendBody("direct:start", "Hello World");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
         
         Exchange exchange = getMockEndpoint("mock:encrypted").getReceivedExchanges().get(0);
         assertNotEquals("Hello World", exchange.getIn().getBody());

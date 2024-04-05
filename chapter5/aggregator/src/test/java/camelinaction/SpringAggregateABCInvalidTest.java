@@ -1,8 +1,8 @@
 package camelinaction;
 
 import org.apache.camel.component.mock.MockEndpoint;
-import org.apache.camel.test.spring.CamelSpringTestSupport;
-import org.junit.Test;
+import org.apache.camel.test.spring.junit5.CamelSpringTestSupport;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.support.AbstractXmlApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -38,7 +38,7 @@ public class SpringAggregateABCInvalidTest extends CamelSpringTestSupport {
         // so we resend the message this time with a correlation key
         template.sendBodyAndHeader("direct:start", "C", "myId", 1);
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
 }

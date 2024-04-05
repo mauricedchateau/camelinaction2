@@ -10,7 +10,7 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.impl.DefaultCamelContext;
 import org.apache.camel.model.dataformat.BindyType;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test that demonstrates how to turn a CSV into a Object using bindy

@@ -3,8 +3,8 @@ package camelinaction;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.component.mock.MockEndpoint;
-import org.apache.camel.test.spring.CamelSpringTestSupport;
-import org.junit.Test;
+import org.apache.camel.test.spring.junit5.CamelSpringTestSupport;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.support.AbstractXmlApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -38,7 +38,7 @@ public class SpringCircuitBreakerLoadBalancerTest extends CamelSpringTestSupport
         // should success
         sendMessage("direct:start", "Got through!");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
     protected Exchange sendMessage(final String endpoint, final Object body) throws Exception {

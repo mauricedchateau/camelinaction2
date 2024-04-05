@@ -2,7 +2,7 @@ package camelinaction;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * A basic example how to use Routing Slip EIP.
@@ -22,7 +22,7 @@ public class RoutingSlipSimpleTest extends CamelTestSupport {
         // send the incoming message with the attached slip
         template.sendBodyAndHeader("direct:start", "Hello World", "mySlip", "mock:a,mock:c");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
     @Override

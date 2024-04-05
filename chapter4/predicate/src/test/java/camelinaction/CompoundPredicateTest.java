@@ -6,7 +6,7 @@ import org.apache.camel.builder.PredicateBuilder;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.processor.validation.PredicateValidationException;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.apache.camel.builder.PredicateBuilder.not;
 
@@ -22,7 +22,7 @@ public class CompoundPredicateTest extends CamelTestSupport {
         String xml = "<book><title>Camel in Action</title><user>Donald Duck</user></book>";
         template.sendBodyAndHeader("direct:start", xml, "source", "batch");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
     /**

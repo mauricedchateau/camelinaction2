@@ -1,8 +1,8 @@
 package camelinaction;
 
 import org.apache.camel.CamelExecutionException;
-import org.apache.camel.test.spring.CamelSpringTestSupport;
-import org.junit.Test;
+import org.apache.camel.test.spring.junit5.CamelSpringTestSupport;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -19,7 +19,7 @@ public class SpringNewExceptionTest extends CamelSpringTestSupport {
 
         template.sendBodyAndHeader("direct:start", "Hello Camel", "name", "Camel");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
     @Test
@@ -35,6 +35,6 @@ public class SpringNewExceptionTest extends CamelSpringTestSupport {
             assertIsInstanceOf(NullPointerException.class, e.getCause());
         }
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 }

@@ -5,7 +5,7 @@ import org.apache.camel.builder.AdviceWithRouteBuilder;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.RouteDefinition;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Unit test demonstrating various functionality of using advice-with
@@ -37,7 +37,7 @@ public class AdviceWithMockEndpointsTest extends CamelTestSupport {
         template.sendBody("seda:quotes", "Camel rocks");
         template.sendBody("seda:quotes", "Bad donkey");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
     @Override

@@ -10,7 +10,7 @@ import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class OrderRouterWithSedaTest extends CamelTestSupport {
 
@@ -21,7 +21,7 @@ public class OrderRouterWithSedaTest extends CamelTestSupport {
  
         // should have one incoming message for each queue
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
     protected CamelContext createCamelContext() throws Exception {

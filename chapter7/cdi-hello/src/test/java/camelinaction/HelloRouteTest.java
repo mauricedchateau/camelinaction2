@@ -5,7 +5,7 @@ import javax.inject.Inject;
 import org.apache.camel.FluentProducerTemplate;
 import org.apache.camel.cdi.Uri;
 import org.apache.camel.test.cdi.CamelCdiRunner;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 
 import static org.junit.Assert.assertEquals;

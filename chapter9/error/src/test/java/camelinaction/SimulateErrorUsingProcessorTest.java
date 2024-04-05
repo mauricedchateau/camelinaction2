@@ -8,7 +8,7 @@ import org.apache.camel.Processor;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Unit test simulating an error using a Processor
@@ -50,7 +50,7 @@ public class SimulateErrorUsingProcessorTest extends CamelTestSupport {
 
         template.sendBody("direct:file", "Camel rocks");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
 }

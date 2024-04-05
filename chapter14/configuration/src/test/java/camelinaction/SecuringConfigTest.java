@@ -10,7 +10,7 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.jasypt.JasyptPropertiesParser;
 import org.apache.camel.component.properties.PropertiesComponent;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class SecuringConfigTest extends CamelTestSupport {
 

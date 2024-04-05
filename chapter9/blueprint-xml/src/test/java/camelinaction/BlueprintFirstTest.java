@@ -4,7 +4,7 @@ import java.io.File;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.test.blueprint.CamelBlueprintTestSupport;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Our first unit test with the Blueprint Test Kit testing OSGi Blueprint XML routes.

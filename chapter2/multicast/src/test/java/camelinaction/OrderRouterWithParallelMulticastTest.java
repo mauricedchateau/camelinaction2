@@ -1,22 +1,22 @@
 package camelinaction;
 
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-
-import javax.jms.ConnectionFactory;
-
+import jakarta.jms.ConnectionFactory;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.camel.CamelContext;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.jms.JmsComponent;
-import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Test;
+import org.apache.camel.component.mock.MockEndpoint;
+import org.apache.camel.test.junit5.CamelTestSupport;
+import org.apache.camel.test.junit5.TestSupport;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class OrderRouterWithParallelMulticastTest extends CamelTestSupport {
 
+    @BeforeEach
     @Override
     public void setUp() throws Exception {
-        deleteDirectory("activemq-data");
+        TestSupport.deleteDirectory("activemq-data");
         super.setUp();
     }
 
@@ -26,7 +26,7 @@ public class OrderRouterWithParallelMulticastTest extends CamelTestSupport {
         CamelContext camelContext = super.createCamelContext();
         
         // connect to embedded ActiveMQ JMS broker
-        ConnectionFactory connectionFactory = 
+        ConnectionFactory connectionFactory =
             new ActiveMQConnectionFactory("vm://localhost");
         camelContext.addComponent("jms",
             JmsComponent.jmsComponentAutoAcknowledge(connectionFactory));
@@ -38,7 +38,7 @@ public class OrderRouterWithParallelMulticastTest extends CamelTestSupport {
     public void testPlacingOrders() throws Exception {
         getMockEndpoint("mock:accounting").expectedMessageCount(1);
         getMockEndpoint("mock:production").expectedMessageCount(1);
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
     
     @Override

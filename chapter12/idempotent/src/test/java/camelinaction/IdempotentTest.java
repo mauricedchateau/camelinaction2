@@ -4,7 +4,7 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.processor.idempotent.MemoryIdempotentRepository;
 import org.apache.camel.spi.IdempotentRepository;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Idempotent consumer test.
@@ -37,7 +37,7 @@ public class IdempotentTest extends CamelTestSupport {
         template.sendBodyAndHeader("seda:inbox", "Brake pad", "orderId", "456");
         template.sendBodyAndHeader("seda:inbox", "Tires", "orderId", "789");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
 
         // the repo should contain these unique keys
         assertTrue(repo.contains("123"));

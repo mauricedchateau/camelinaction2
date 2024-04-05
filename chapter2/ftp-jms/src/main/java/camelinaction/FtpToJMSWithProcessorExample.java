@@ -1,7 +1,6 @@
 package camelinaction;
 
-import javax.jms.ConnectionFactory;
-
+import jakarta.jms.ConnectionFactory;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.camel.CamelContext;
 import org.apache.camel.Exchange;
@@ -17,35 +16,36 @@ import org.apache.camel.impl.DefaultCamelContext;
  */
 public class FtpToJMSWithProcessorExample {
 
-    public static void main(String args[]) throws Exception {
+    public static void main(String[] args) throws Exception {
         // create CamelContext
-        CamelContext context = new DefaultCamelContext();
-        
-        // connect to embedded ActiveMQ JMS broker
-        ConnectionFactory connectionFactory = 
-            new ActiveMQConnectionFactory("vm://localhost");
-        context.addComponent("jms",
-            JmsComponent.jmsComponentAutoAcknowledge(connectionFactory));
+        try (CamelContext context = new DefaultCamelContext()) {
 
-        // add our route to the CamelContext
-        context.addRoutes(new RouteBuilder() {
-            @Override
-            public void configure() {
-                from("ftp://rider.com/orders?username=rider&password=secret").
-                process(new Processor() {                    
-                    public void process(Exchange exchange) throws Exception {
-                        System.out.println("We just downloaded: " + exchange.getIn().getHeader("CamelFileName"));
-                    }
-                }).
-                to("jms:incomingOrders");
-            }
-        });
+            // connect to embedded ActiveMQ JMS broker
+            ConnectionFactory connectionFactory =
+                    new ActiveMQConnectionFactory("vm://localhost");
+            context.addComponent("jms",
+                    JmsComponent.jmsComponentAutoAcknowledge(connectionFactory));
 
-        // start the route and let it do its work
-        context.start();
-        Thread.sleep(10000);
+            // add our route to the CamelContext
+            context.addRoutes(new RouteBuilder() {
+                @Override
+                public void configure() {
+                    from("ftp://rider.com/orders?username=rider&password=secret").
+                            process(new Processor() {
+                                public void process(Exchange exchange) throws Exception {
+                                    System.out.println("We just downloaded: " + exchange.getIn().getHeader("CamelFileName"));
+                                }
+                            }).
+                            to("jms:incomingOrders");
+                }
+            });
 
-        // stop the CamelContext
-        context.stop();
+            // start the route and let it do its work
+            context.start();
+            Thread.sleep(10000);
+
+            // stop the CamelContext
+            context.stop();
+        }
     }
 }

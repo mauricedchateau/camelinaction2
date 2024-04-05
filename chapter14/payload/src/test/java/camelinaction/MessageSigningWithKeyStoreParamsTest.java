@@ -5,7 +5,7 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.impl.JndiRegistry;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.apache.camel.util.jsse.KeyStoreParameters;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class MessageSigningWithKeyStoreParamsTest extends CamelTestSupport {
 
@@ -31,7 +31,7 @@ public class MessageSigningWithKeyStoreParamsTest extends CamelTestSupport {
 
         template.sendBody("direct:sign", "Hello World");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
         
         Exchange exchange = getMockEndpoint("mock:signed").getReceivedExchanges().get(0);
         assertNotNull(exchange.getIn().getHeader("CamelDigitalSignature"));

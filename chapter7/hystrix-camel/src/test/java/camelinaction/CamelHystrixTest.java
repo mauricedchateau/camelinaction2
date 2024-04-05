@@ -5,7 +5,7 @@ import java.io.IOException;
 import org.apache.camel.RoutesBuilder;
 import org.apache.camel.impl.JndiRegistry;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Tests Camel with Hystrix using Java DSL

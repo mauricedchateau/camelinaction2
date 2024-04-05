@@ -5,7 +5,7 @@ import org.apache.camel.CamelExecutionException;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * The Splitter using its build in Aggregator example.
@@ -39,7 +39,7 @@ public class SplitterStopOnExceptionABCTest extends CamelTestSupport {
             assertEquals("Key not a known word F", iae.getMessage());
         }
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
     @Override

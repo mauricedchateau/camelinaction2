@@ -1,3 +1,14 @@
+Fork info
+=========
+The purpose of this fork is to update the original code to work with the *current* (April 2024) LTS version for Camel, 4.4.1.
+
+It also updates the Java version to the current LTS version, 21, and contains a number of updates for dependencies and maven plugins as well.
+
+For more information on some of the code updates that were applied, see:
+* [APACHE CAMEL 2.X TO 3.0 MIGRATION GUIDE](https://camel.apache.org/manual/camel-3-migration-guide.html)
+* [APACHE CAMEL 3.X TO 4.0 MIGRATION GUIDE](https://camel.apache.org/manual/camel-4-migration-guide.html)
+* [MIGRATING CAMEL TESTS FROM JUNIT 4 TO JUNIT 5](https://camel.apache.org/components/4.4.x/others/test-junit5.html#_migrating_camel_tests_from_junit_4_to_junit_5)
+
 Camel in Action 2nd Edition
 ===========================
 

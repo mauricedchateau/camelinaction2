@@ -1,7 +1,7 @@
 package camelinaction;
 
-import org.apache.camel.test.spring.CamelSpringTestSupport;
-import org.junit.Test;
+import org.apache.camel.test.spring.junit5.CamelSpringTestSupport;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.support.AbstractXmlApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -28,7 +28,7 @@ public class SpringRoutingSlipSimpleTest extends CamelSpringTestSupport {
         // send the incoming message with the attached slip
         template.sendBodyAndHeader("direct:start", "Hello World", "mySlip", "mock:a,mock:c");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
 }

@@ -4,8 +4,8 @@ import java.io.File;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.builder.NotifyBuilder;
-import org.apache.camel.test.spring.CamelSpringTestSupport;
-import org.junit.Test;
+import org.apache.camel.test.spring.junit5.CamelSpringTestSupport;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.AbstractApplicationContext;
 

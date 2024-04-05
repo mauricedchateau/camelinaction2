@@ -9,7 +9,7 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.model.RouteDefinition;
 import org.apache.camel.model.SplitDefinition;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.apache.camel.util.toolbox.AggregationStrategies.flexible;
 
@@ -43,7 +43,7 @@ public class WeaveByTypeTest extends CamelTestSupport {
 
         template.sendBody("seda:quotes", "Camel Rules,Donkey is Bad");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
 
         resetMocks();
 
@@ -55,7 +55,7 @@ public class WeaveByTypeTest extends CamelTestSupport {
 
         template.sendBody("seda:quotes", "Beer is good,Whiskey is better");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
     @Override

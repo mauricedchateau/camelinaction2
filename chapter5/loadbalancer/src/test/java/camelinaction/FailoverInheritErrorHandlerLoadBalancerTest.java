@@ -4,7 +4,7 @@ import org.apache.camel.LoggingLevel;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Demonstrates how to use the Load Balancer EIP pattern.
@@ -47,7 +47,7 @@ public class FailoverInheritErrorHandlerLoadBalancerTest extends CamelTestSuppor
         template.sendBody("direct:start", "Hello");
         template.sendBody("direct:start", "Kaboom");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
     @Override

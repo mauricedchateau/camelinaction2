@@ -1,7 +1,8 @@
 package camelinaction;
 
-import org.apache.camel.test.spring.CamelSpringTestSupport;
-import org.junit.Test;
+import org.apache.camel.component.mock.MockEndpoint;
+import org.apache.camel.test.spring.junit5.CamelSpringTestSupport;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.support.AbstractXmlApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -19,6 +20,6 @@ public class SpringOrderRouterWithStopTest extends CamelSpringTestSupport {
         getMockEndpoint("mock:bad").expectedMessageCount(1);
         getMockEndpoint("mock:continued").expectedMessageCount(3);
         
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 }

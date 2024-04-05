@@ -2,7 +2,7 @@ package camelinaction;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * An example how to use Routing Slip EIP.
@@ -22,7 +22,7 @@ public class RoutingSlipHeaderTest extends CamelTestSupport {
         // send the incoming message
         template.sendBody("direct:start", "Hello World");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
     @Test
@@ -34,7 +34,7 @@ public class RoutingSlipHeaderTest extends CamelTestSupport {
 
         template.sendBody("direct:start", "We are Cool");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
     @Override

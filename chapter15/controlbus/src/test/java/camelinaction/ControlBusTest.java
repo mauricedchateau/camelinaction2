@@ -6,7 +6,7 @@ import org.apache.camel.Exchange;
 import org.apache.camel.builder.NotifyBuilder;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Test to show how to stop a route when its done.
@@ -52,7 +52,7 @@ public class ControlBusTest extends CamelTestSupport {
         template.sendBodyAndHeader("file:target/inventory/manual", input, Exchange.FILE_NAME, "manual.csv");
 
         // assert we got the message
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
 
         // wait for the route to be done
         boolean matches = notify.matches(5, TimeUnit.SECONDS);

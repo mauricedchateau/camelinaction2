@@ -8,7 +8,7 @@ import java.util.Properties;
 import org.apache.camel.Exchange;
 import org.apache.camel.test.blueprint.CamelBlueprintTestSupport;
 import org.apache.camel.util.KeyValueHolder;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * An unit test that uses a shared OSGi service which is not available when running
@@ -56,7 +56,7 @@ public class BlueprintServiceTest extends CamelBlueprintTestSupport {
         String content = context.getTypeConverter().convertTo(String.class, target);
         assertEquals("Hello World", content);
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
 }

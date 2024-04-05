@@ -5,7 +5,7 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.impl.JndiRegistry;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Showing how using default error handler to attempt redelivery
@@ -27,7 +27,7 @@ public class DefaultErrorHandlerAsyncTest extends CamelTestSupport {
 
         template.sendBody("seda:queue.inbox","amount=1,name=Camel in Action");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
     @Test
@@ -40,7 +40,7 @@ public class DefaultErrorHandlerAsyncTest extends CamelTestSupport {
         // wait 5 seconds to let this test run as we expect 0 messages
         Thread.sleep(5000);
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
     @Test
@@ -52,7 +52,7 @@ public class DefaultErrorHandlerAsyncTest extends CamelTestSupport {
         template.sendBody("seda:queue.inbox","amount=1,name=ActiveMQ in Action");
         template.sendBody("seda:queue.inbox","amount=1,name=Camel in Action");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
     @Override

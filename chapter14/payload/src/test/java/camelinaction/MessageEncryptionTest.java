@@ -9,7 +9,7 @@ import org.apache.camel.converter.crypto.CryptoDataFormat;
 import org.apache.camel.impl.JndiRegistry;
 import org.apache.camel.test.junit4.CamelTestSupport;
 import org.apache.camel.util.jsse.KeyStoreParameters;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class MessageEncryptionTest extends CamelTestSupport {
 
@@ -37,7 +37,7 @@ public class MessageEncryptionTest extends CamelTestSupport {
 
         template.sendBody("direct:start", "Hello World");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
         
         Exchange exchange = getMockEndpoint("mock:encrypted").getReceivedExchanges().get(0);
         assertNotEquals("Hello World", exchange.getIn().getBody());

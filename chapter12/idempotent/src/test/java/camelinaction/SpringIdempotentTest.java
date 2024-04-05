@@ -1,8 +1,8 @@
 package camelinaction;
 
 import org.apache.camel.spi.IdempotentRepository;
-import org.apache.camel.test.spring.CamelSpringTestSupport;
-import org.junit.Test;
+import org.apache.camel.test.spring.junit5.CamelSpringTestSupport;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -41,7 +41,7 @@ public class SpringIdempotentTest extends CamelSpringTestSupport {
         template.sendBodyAndHeader("seda:inbox", "Brake pad", "orderId", "456");
         template.sendBodyAndHeader("seda:inbox", "Tires", "orderId", "789");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
 
         // the repo should contain these unique keys
         assertTrue(repo.contains("123"));

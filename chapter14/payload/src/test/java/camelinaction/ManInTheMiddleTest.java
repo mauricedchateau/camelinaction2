@@ -4,7 +4,7 @@ import java.security.SignatureException;
 
 import org.apache.camel.CamelExecutionException;
 import org.apache.camel.builder.RouteBuilder;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class ManInTheMiddleTest extends MessageSigningTest {
         
@@ -15,7 +15,7 @@ public class ManInTheMiddleTest extends MessageSigningTest {
         try {
             template.sendBody("direct:sign", "Hello World");            
         } catch (CamelExecutionException e) {
-            assertMockEndpointsSatisfied();
+            MockEndpoint.assertIsSatisfied(context);
             assertIsInstanceOf(SignatureException.class, e.getCause());
         }
     }

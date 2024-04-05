@@ -5,7 +5,7 @@ import java.net.ConnectException;
 import org.apache.camel.CamelContext;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Unit test to demonstrate using a custom {@link org.apache.camel.spi.EventNotifier}.
@@ -33,7 +33,7 @@ public class RiderEventNotifierTest extends CamelTestSupport {
 
         template.sendBody("direct:ok", "Camel rocks");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
 
         // should be no failures
         assertEquals(0, dummy.getEvents().size());

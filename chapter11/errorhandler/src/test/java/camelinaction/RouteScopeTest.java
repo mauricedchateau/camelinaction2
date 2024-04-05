@@ -6,7 +6,7 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.impl.JndiRegistry;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Showing how using per route scope error handling
@@ -39,7 +39,7 @@ public class RouteScopeTest extends CamelTestSupport {
 
         template.sendBodyAndHeader("file://target/orders", "amount=1#name=Camel in Action", Exchange.FILE_NAME, "order.txt");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
     @Test
@@ -57,7 +57,7 @@ public class RouteScopeTest extends CamelTestSupport {
         // wait 10 seconds to let this test run
         Thread.sleep(10000);
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
     @Test
@@ -76,7 +76,7 @@ public class RouteScopeTest extends CamelTestSupport {
         // wait 5 seconds to let this test run
         Thread.sleep(5000);
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
     @Override

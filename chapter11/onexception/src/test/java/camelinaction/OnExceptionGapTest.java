@@ -7,7 +7,7 @@ import java.net.ConnectException;
 import org.apache.camel.CamelExecutionException;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * This tests shows no match for onException and therefore fallback on the error handler

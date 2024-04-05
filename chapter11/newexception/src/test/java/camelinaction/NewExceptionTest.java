@@ -3,7 +3,7 @@ package camelinaction;
 import org.apache.camel.CamelExecutionException;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class NewExceptionTest extends CamelTestSupport {
 
@@ -37,7 +37,7 @@ public class NewExceptionTest extends CamelTestSupport {
 
         template.sendBodyAndHeader("direct:start", "Hello Camel", "name", "Camel");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
     @Test
@@ -53,6 +53,6 @@ public class NewExceptionTest extends CamelTestSupport {
             assertIsInstanceOf(NullPointerException.class, e.getCause());
         }
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 }

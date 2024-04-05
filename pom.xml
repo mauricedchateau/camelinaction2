@@ -12,7 +12,7 @@
   <inceptionYear>2015</inceptionYear>
 
   <prerequisites>
-    <maven>3.5.0</maven>
+    <maven>3.9.6</maven>
   </prerequisites>
 
   <developers>
@@ -56,29 +56,29 @@
 
   <properties>
 
-    <activemq-version>5.15.7</activemq-version>
+    <activemq-version>6.1.0</activemq-version>
     <activemq-karaf-version>5.13.8</activemq-karaf-version>
-    <camel-version>2.25.4</camel-version>
+    <camel-version>4.4.1</camel-version>
     <cxf-version>3.3.10</cxf-version>
-    <hawtio-version>1.4.68</hawtio-version>
+    <hawtio-version>2.17.7</hawtio-version>
     <commons-dbcp2-version>2.5.0</commons-dbcp2-version>
     <deltaspike-version>1.9.0</deltaspike-version>
     <hystrix-version>1.5.18</hystrix-version>
     <jackson-version>2.9.10</jackson-version>
     <javax-mail-version>1.6.1</javax-mail-version>
-    <jolokia-version>1.6.2</jolokia-version>
+    <jolokia-version>1.7.2</jolokia-version>
     <jetty-plugin-version>8.1.17.v20150415</jetty-plugin-version>
     <jetty9-plugin-version>9.4.33.v20201020</jetty9-plugin-version>
     <junit-version>4.12</junit-version>
     <karaf-version>4.2.10</karaf-version>
-    <log4j-version>1.2.17</log4j-version>
-    <maven-bundle-plugin-version>3.3.0</maven-bundle-plugin-version>
+    <log4j-version>2.23.1</log4j-version>
+    <maven-bundle-plugin-version>5.1.9</maven-bundle-plugin-version>
     <mock-javamail-version>1.9</mock-javamail-version>
-    <slf4j-version>1.7.26</slf4j-version>
-    <spring-version>5.1.20.RELEASE</spring-version>
-    <spring-boot-version>2.1.8.RELEASE</spring-boot-version>
+    <slf4j-version>2.0.12</slf4j-version>
+    <spring-version>6.1.5</spring-version>
+    <spring-boot-version>3.2.4</spring-boot-version>
     <swagger-version>1.5.21</swagger-version>
-    <xbean-version>4.5</xbean-version>
+    <xbean-version>4.24</xbean-version>
     <vertx-version>3.6.3</vertx-version>
     <weld-version>2.4.7.Final</weld-version>
     <wildfly-swarm-version>2017.11.0</wildfly-swarm-version>
@@ -95,10 +95,10 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.6.1</version>
+          <version>3.12.1</version>
           <configuration>
-            <source>1.8</source>
-            <target>1.8</target>
+            <source>21</source>
+            <target>21</target>
             <maxmem>512M</maxmem>
             <showDeprecation>true</showDeprecation>
           </configuration>
@@ -106,7 +106,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-eclipse-plugin</artifactId>
-          <version>2.9</version>
+          <version>2.10</version>
           <configuration>
             <downloadSources>true</downloadSources>
             <downloadJavadocs>false</downloadJavadocs>
@@ -115,12 +115,12 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-resources-plugin</artifactId>
-          <version>2.4.3</version>
+          <version>3.3.1</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-clean-plugin</artifactId>
-          <version>2.4.1</version>
+          <version>3.3.2</version>
           <configuration>
             <filesets>
               <fileset>
@@ -132,36 +132,37 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-install-plugin</artifactId>
-          <version>2.5.2</version>
+          <version>3.1.1</version>
         </plugin>
         <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-remote-resources-plugin</artifactId>
-          <version>1.5</version>
+          <version>3.2.0</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-jar-plugin</artifactId>
-          <version>2.6</version>
+          <version>3.3.0</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-dependency-plugin</artifactId>
-          <version>2.10</version>
+          <version>3.3.0</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
-          <version>2.18.1</version>
+          <version>3.2.5</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-checkstyle-plugin</artifactId>
-          <version>2.15</version>
+          <version>3.3.1</version>
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>exec-maven-plugin</artifactId>
-          <version>1.6.0</version>
+          <version>3.2.0</version>
         </plugin>
         <plugin>
           <groupId>org.apache.camel</groupId>
@@ -191,12 +192,12 @@
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>build-helper-maven-plugin</artifactId>
-          <version>1.10</version>
+          <version>3.5.0</version>
         </plugin>                
         <plugin>
           <groupId>org.wildfly.plugins</groupId>
           <artifactId>wildfly-maven-plugin</artifactId>
-          <version>1.1.0.Alpha11</version>
+          <version>4.2.2.Final</version>
         </plugin>        
       </plugins>
     </pluginManagement>
@@ -272,21 +273,23 @@
         <version>${slf4j-version}</version>
       </dependency>
       <dependency>
-        <groupId>org.slf4j</groupId>
-        <artifactId>slf4j-log4j12</artifactId>
-        <version>${slf4j-version}</version>
-      </dependency>
-      <dependency>
-        <groupId>log4j</groupId>
-        <artifactId>log4j</artifactId>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-slf4j2-impl</artifactId>
         <version>${log4j-version}</version>
       </dependency>
 
       <!-- Testing -->
       <dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-        <version>${junit-version}</version>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter</artifactId>
+        <version>5.10.2</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.assertj</groupId>
+        <artifactId>assertj-core</artifactId>
+        <version>3.25.1</version>
+        <scope>test</scope>
       </dependency>
 
       <!-- Jolokia -->
@@ -362,17 +365,17 @@
       <dependency>
         <groupId>org.apache.ftpserver</groupId>
         <artifactId>ftpserver-core</artifactId>
-        <version>1.0.0</version>
+        <version>1.2.0</version>
       </dependency>
       <dependency>
         <groupId>org.apache.ftpserver</groupId>
         <artifactId>ftplet-api</artifactId>
-        <version>1.0.0</version>
+        <version>1.2.0</version>
       </dependency>
       <dependency>
         <groupId>org.apache.mina</groupId>
         <artifactId>mina-core</artifactId>
-        <version>2.0.9</version>
+        <version>2.2.3</version>
       </dependency>
     </dependencies>
 

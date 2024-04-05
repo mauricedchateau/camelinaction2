@@ -2,7 +2,7 @@ package camelinaction;
 
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class SimpleBuilderTest extends CamelTestSupport {
 
@@ -15,7 +15,7 @@ public class SimpleBuilderTest extends CamelTestSupport {
         template.sendBody("direct:start", "Camel in Action Rocks :-)");
         template.sendBody("direct:start", "I'm going to cause an Exception...");
         
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
     
     @Override

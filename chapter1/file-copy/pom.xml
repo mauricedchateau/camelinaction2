@@ -9,7 +9,7 @@
     <groupId>com.camelinaction</groupId>
     <artifactId>chapter1</artifactId>
     <version>2.0.0</version>
-    <relativePath>..</relativePath>
+    <relativePath>../pom.xml</relativePath>
   </parent>
 
   <artifactId>chapter1-file-copy</artifactId>
@@ -21,8 +21,8 @@
       <artifactId>camel-core</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-log4j12</artifactId>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-slf4j2-impl</artifactId>
     </dependency>
   </dependencies>
 
@@ -33,7 +33,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
-        <version>1.2.1</version>
+        <version>1.6.0</version>
         <configuration>
           <mainClass>camelinaction.FileCopierWithCamel</mainClass>
           <includePluginDependencies>false</includePluginDependencies>

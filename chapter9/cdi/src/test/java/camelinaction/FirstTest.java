@@ -9,7 +9,7 @@ import org.apache.camel.ProducerTemplate;
 import org.apache.camel.cdi.Uri;
 import org.apache.camel.test.cdi.CamelCdiRunner;
 import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 
 import static org.apache.camel.test.junit4.TestSupport.deleteDirectory;

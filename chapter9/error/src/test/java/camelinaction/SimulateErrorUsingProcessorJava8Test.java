@@ -6,7 +6,7 @@ import java.net.ConnectException;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Unit test simulating an error using a Processor using Java 8 lambda style
@@ -44,7 +44,7 @@ public class SimulateErrorUsingProcessorJava8Test extends CamelTestSupport {
 
         template.sendBody("direct:file", "Camel rocks");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
 }

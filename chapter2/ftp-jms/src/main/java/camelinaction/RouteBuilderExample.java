@@ -6,18 +6,19 @@ import org.apache.camel.impl.DefaultCamelContext;
 
 public class RouteBuilderExample {
 
-    public static void main(String args[]) throws Exception {
-        CamelContext context = new DefaultCamelContext();
-        
-        context.addRoutes(new RouteBuilder() {
-            @Override
-            public void configure() {
-                // try auto complete in your IDE on the line below
+    public static void main(String[] args) throws Exception {
+        try (CamelContext context = new DefaultCamelContext()) {
 
-            }
-        });
-        context.start();
-        Thread.sleep(10000);
-        context.stop();
+            context.addRoutes(new RouteBuilder() {
+                @Override
+                public void configure() {
+                    // try auto complete in your IDE on the line below
+
+                }
+            });
+            context.start();
+            Thread.sleep(10000);
+            context.stop();
+        }
     }
 }

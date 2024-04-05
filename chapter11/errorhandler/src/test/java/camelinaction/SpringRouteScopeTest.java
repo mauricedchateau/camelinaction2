@@ -2,8 +2,8 @@ package camelinaction;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.component.mock.MockEndpoint;
-import org.apache.camel.test.spring.CamelSpringTestSupport;
-import org.junit.Test;
+import org.apache.camel.test.spring.junit5.CamelSpringTestSupport;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.support.AbstractXmlApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -36,7 +36,7 @@ public class SpringRouteScopeTest extends CamelSpringTestSupport {
 
         template.sendBodyAndHeader("file://target/orders", "amount=1#name=Camel in Action", Exchange.FILE_NAME, "order.txt");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
     @Test
@@ -54,7 +54,7 @@ public class SpringRouteScopeTest extends CamelSpringTestSupport {
         // wait 10 seconds to let this test run
         Thread.sleep(10000);
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
     @Test
@@ -73,7 +73,7 @@ public class SpringRouteScopeTest extends CamelSpringTestSupport {
         // wait 5 seconds to let this test run
         Thread.sleep(5000);
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
 }

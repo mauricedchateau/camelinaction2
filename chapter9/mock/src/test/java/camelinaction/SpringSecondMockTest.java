@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.component.mock.MockEndpoint;
-import org.apache.camel.test.spring.CamelSpringTestSupport;
-import org.junit.Test;
+import org.apache.camel.test.spring.junit5.CamelSpringTestSupport;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -27,7 +27,7 @@ public class SpringSecondMockTest extends CamelSpringTestSupport {
         template.sendBody("stub:jms:topic:quote", "Hello Camel");
         template.sendBody("stub:jms:topic:quote", "Camel rocks");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
 
         List<Exchange> list = mock.getReceivedExchanges();
         String body1 = list.get(0).getIn().getBody(String.class);

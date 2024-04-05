@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class PurchaseOrderCsvTest extends CamelTestSupport {
 
@@ -15,7 +15,7 @@ public class PurchaseOrderCsvTest extends CamelTestSupport {
         MockEndpoint mock = getMockEndpoint("mock:queue.csv");
         mock.expectedMessageCount(2);
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
 
         List line1 = mock.getReceivedExchanges().get(0).getIn().getBody(List.class);
         assertEquals("Camel in Action", line1.get(0));

@@ -10,7 +10,7 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.impl.DefaultCamelContext;
 import org.apache.camel.model.dataformat.BindyType;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class PurchaseOrderBindyTest extends TestCase {
 

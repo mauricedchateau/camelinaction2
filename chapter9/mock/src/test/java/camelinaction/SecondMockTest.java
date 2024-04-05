@@ -6,7 +6,7 @@ import org.apache.camel.Exchange;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import static org.apache.camel.builder.Builder.simple;
 
@@ -37,7 +37,7 @@ public class SecondMockTest extends CamelTestSupport {
         template.sendBody("stub:jms:topic:quote", "Hello Camel");
         template.sendBody("stub:jms:topic:quote", "Camel rocks");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
 
         List<Exchange> list = mock.getReceivedExchanges();
         String body1 = list.get(0).getIn().getBody(String.class);

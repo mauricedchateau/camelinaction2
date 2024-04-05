@@ -3,7 +3,7 @@ package camelinaction;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * The ABC example for using the Aggregator EIP.
@@ -43,7 +43,7 @@ public class AggregateABCEagerTest extends CamelTestSupport {
         // and now the END message to trigger completion
         template.sendBodyAndHeader("direct:start", "END", "myId", 1);
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
     }
 
     @Override

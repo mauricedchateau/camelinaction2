@@ -6,7 +6,7 @@ import org.apache.camel.ProducerTemplate;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.impl.DefaultCamelContext;
 import org.apache.camel.impl.JndiRegistry;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Using {@link org.apache.camel.impl.JndiRegistry} as the Camel {@link org.apache.camel.spi.Registry}

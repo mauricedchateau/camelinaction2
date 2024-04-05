@@ -3,8 +3,8 @@ package camelinaction;
 import java.util.List;
 
 import org.apache.camel.component.mock.MockEndpoint;
-import org.apache.camel.test.spring.CamelSpringTestSupport;
-import org.junit.Test;
+import org.apache.camel.test.spring.junit5.CamelSpringTestSupport;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.support.AbstractXmlApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -16,7 +16,7 @@ public class PurchaseOrderCsvSpringTest extends CamelSpringTestSupport {
         MockEndpoint mock = getMockEndpoint("mock:queue.csv");
         mock.expectedMessageCount(2);
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
 
         List line1 = mock.getReceivedExchanges().get(0).getIn().getBody(List.class);
         assertEquals("Camel in Action", line1.get(0));

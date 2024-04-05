@@ -4,7 +4,7 @@ import org.apache.camel.Exchange;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 /**
  * Unit test showing how to use a custom expression. The custom expression detect gaps in a sequence
@@ -60,7 +60,7 @@ public class GapTest extends CamelTestSupport {
 
         // assert that fails since there was a gap
         try {
-            assertMockEndpointsSatisfied();
+            MockEndpoint.assertIsSatisfied(context);
         } catch (AssertionError e) {
             System.out.println(e.getMessage());
             assertEquals("Gap detected: last: 2 current: 4", e.getMessage());

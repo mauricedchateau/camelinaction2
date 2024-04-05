@@ -1,8 +1,8 @@
 package camelinaction;
 
 import org.apache.camel.Exchange;
-import org.apache.camel.test.spring.CamelSpringTestSupport;
-import org.junit.Test;
+import org.apache.camel.test.spring.junit5.CamelSpringTestSupport;
+import org.junit.jupiter.api.Test;
 import org.springframework.context.support.AbstractXmlApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -20,7 +20,7 @@ public class SpringMessageSigningWithKeyStoreParamsTest extends CamelSpringTestS
 
         template.sendBody("direct:sign", "Hello World");
 
-        assertMockEndpointsSatisfied();
+        MockEndpoint.assertIsSatisfied(context);
         
         Exchange exchange = getMockEndpoint("mock:signed").getReceivedExchanges().get(0);
         assertNotNull(exchange.getIn().getHeader("CamelDigitalSignature"));
