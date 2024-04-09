@@ -31,7 +31,7 @@ public class SpringOrderServiceTest extends CamelSpringTestSupport {
         String id = template.requestBody("http://localhost:8080/orders?" + auth, xml, String.class);
         assertNotNull(id);
 
-        log.info("Created new order with id " + id);
+        log.info("Created new order with id {}", id);
 
         // should create a new order with id 3
         assertEquals("3", id);
@@ -53,7 +53,7 @@ public class SpringOrderServiceTest extends CamelSpringTestSupport {
         String id = template.requestBody("http://localhost:8080/orders?" + auth, xml, String.class);
         assertNotNull(id);
 
-        log.info("Created new order with id " + id);
+        log.info("Created new order with id {}", id);
 
         // should create a new order with id 3
         assertEquals("3", id);

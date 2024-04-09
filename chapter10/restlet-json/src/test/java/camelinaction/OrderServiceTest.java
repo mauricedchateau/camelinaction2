@@ -32,7 +32,7 @@ public class OrderServiceTest extends CamelTestSupport {
         String id = template.requestBody("restlet:http://0.0.0.0:8080/orders?restletMethod=POST", json, String.class);
         assertNotNull(id);
 
-        log.info("Created new order with id " + id);
+        log.info("Created new order with id {}", id);
 
         // should create a new order with id 1
         assertEquals("1", id);
@@ -48,7 +48,7 @@ public class OrderServiceTest extends CamelTestSupport {
         String id = template.requestBody("restlet:http://0.0.0.0:8080/orders?restletMethod=POST", json, String.class);
         assertNotNull(id);
 
-        log.info("Created new order with id " + id);
+        log.info("Created new order with id {}", id);
 
         // should create a new order with id 1
         assertEquals("1", id);

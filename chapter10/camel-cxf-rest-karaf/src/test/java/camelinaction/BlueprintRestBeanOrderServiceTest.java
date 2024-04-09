@@ -38,7 +38,7 @@ public class BlueprintRestBeanOrderServiceTest extends CamelBlueprintTestSupport
         String id = template.requestBodyAndHeaders("restlet:http://localhost:8080/orders?restletMethod=POST", json, headers, String.class);
         assertNotNull(id);
 
-        log.info("Created new order with id " + id);
+        log.info("Created new order with id {}", id);
 
         // should create a new order with id 3
         assertEquals("3", id);
@@ -57,7 +57,7 @@ public class BlueprintRestBeanOrderServiceTest extends CamelBlueprintTestSupport
         String id = template.requestBodyAndHeaders("restlet:http://localhost:8080/orders?restletMethod=POST", json, headers, String.class);
         assertNotNull(id);
 
-        log.info("Created new order with id " + id);
+        log.info("Created new order with id {}", id);
 
         // should create a new order with id 3
         assertEquals("3", id);

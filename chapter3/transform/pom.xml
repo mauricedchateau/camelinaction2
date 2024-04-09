@@ -7,7 +7,7 @@
     <groupId>com.camelinaction</groupId>
     <artifactId>chapter3</artifactId>
     <version>2.0.0</version>
-    <relativePath>..</relativePath>
+    <relativePath>../pom.xml</relativePath>
   </parent>
 
   <artifactId>chapter3-transform</artifactId>
@@ -34,12 +34,6 @@
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-slf4j2-impl</artifactId>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-log4j12</artifactId>
       <scope>test</scope>
     </dependency>
 

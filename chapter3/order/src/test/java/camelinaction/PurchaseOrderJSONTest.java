@@ -2,12 +2,15 @@ package camelinaction;
 
 import org.apache.camel.Header;
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.impl.JndiRegistry;
 import org.apache.camel.model.dataformat.JsonLibrary;
-import org.apache.camel.test.junit4.CamelTestSupport;
+import org.apache.camel.spi.Registry;
+import org.apache.camel.test.junit5.CamelTestSupport;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Example how to use JSON data format with the camel-jackson component.
@@ -16,20 +19,17 @@ import org.slf4j.LoggerFactory;
  */
 public class PurchaseOrderJSONTest extends CamelTestSupport {
 
-    private static Logger LOG = LoggerFactory.getLogger(PurchaseOrderJSONTest.class);
+    private static final Logger LOG = LoggerFactory.getLogger(PurchaseOrderJSONTest.class);
 
     @Override
-    protected JndiRegistry createRegistry() throws Exception {
-        // register our service bean in the Camel registry
-        JndiRegistry jndi = super.createRegistry();
-        jndi.bind("orderService", new OrderServiceBean());
-        return jndi;
+    protected void bindToRegistry(Registry registry) throws Exception {
+        registry.bind("orderService", new OrderServiceBean());
     }
 
     @Test
     public void testJSON() throws Exception {
-        String out = template.requestBody("jetty:http://localhost:8080/order/service?id=123", null, String.class);
-        LOG.info("Response from order service: " + out);
+        String out = template.requestBody("rest:get:order/service?id=123&host=localhost:8080", null, String.class);
+        LOG.info("Response from order service: {}", out);
 
         assertNotNull(out);
         assertTrue(out.contains("Camel in Action"));
@@ -50,7 +50,7 @@ public class PurchaseOrderJSONTest extends CamelTestSupport {
     public static class OrderServiceBean {
 
         public PurchaseOrder lookup(@Header("id") String id) {
-            LOG.info("Finding purchase order for id " + id);
+            LOG.info("Finding purchase order for id {}", id);
             // just return a fixed response
             PurchaseOrder order = new PurchaseOrder();
             order.setPrice(69.99);

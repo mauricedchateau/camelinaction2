@@ -11,3 +11,6 @@ data/*
 .factorypath
 .vscode
 .mvn/wrapper/maven-wrapper.jar
+
+/chapter3/converter/src/main/java/camelinaction/PurchaseOrderConverterLoader.java
+/chapter3/converter/src/main/resources/META-INF/services/org/apache/camel/TypeConverterLoader

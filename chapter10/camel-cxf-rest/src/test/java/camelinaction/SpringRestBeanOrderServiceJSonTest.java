@@ -40,7 +40,7 @@ public class SpringRestBeanOrderServiceJSonTest extends CamelSpringTestSupport {
         String id = template.requestBodyAndHeaders("restlet:http://localhost:8080/orders?restletMethod=POST", json, headers, String.class);
         assertNotNull(id);
 
-        log.info("Created new order with id " + id);
+        log.info("Created new order with id {}", id);
 
         // should create a new order with id 1
         assertEquals("1", id);
@@ -59,7 +59,7 @@ public class SpringRestBeanOrderServiceJSonTest extends CamelSpringTestSupport {
         String id = template.requestBodyAndHeaders("restlet:http://localhost:8080/orders?restletMethod=POST", json, headers, String.class);
         assertNotNull(id);
 
-        log.info("Created new order with id " + id);
+        log.info("Created new order with id {}", id);
 
         // should create a new order with id 1
         assertEquals("1", id);

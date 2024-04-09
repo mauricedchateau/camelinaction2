@@ -7,7 +7,7 @@
     <groupId>com.camelinaction</groupId>
     <artifactId>chapter3</artifactId>
     <version>2.0.0</version>
-    <relativePath>..</relativePath>
+    <relativePath>../pom.xml</relativePath>
   </parent>
 
   <artifactId>chapter3-converter</artifactId>
@@ -33,17 +33,47 @@
     </dependency>
 
     <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-log4j12</artifactId>
-      <scope>test</scope>
-    </dependency>
-
-    <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter</artifactId>
       <scope>test</scope>
     </dependency>
   </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.camel</groupId>
+        <artifactId>camel-component-maven-plugin</artifactId>
+        <version>${camel-version}</version>
+        <configuration>
+          <sourcesOutputDir>src/main/java</sourcesOutputDir>
+          <resourcesOutputDir>src/main/resources</resourcesOutputDir>
+        </configuration>
+        <executions>
+          <execution>
+            <id>generate</id>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <phase>process-classes</phase>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>recompile</id>
+            <goals>
+              <goal>compile</goal>
+            </goals>
+            <phase>process-classes</phase>
+          </execution>
+        </executions>
+      </plugin>
+
+    </plugins>
+  </build>
 
 </project>
 

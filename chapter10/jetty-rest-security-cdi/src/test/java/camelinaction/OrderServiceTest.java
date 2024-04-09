@@ -40,7 +40,7 @@ public class OrderServiceTest extends TestCase {
         String id = template.requestBody("http://localhost:8080/orders?" + auth, xml, String.class);
         assertNotNull(id);
 
-        LOG.info("Created new order with id " + id);
+        LOG.info("Created new order with id {}", id);
 
         // should create a new order with id 3
         assertEquals("3", id);
@@ -64,7 +64,7 @@ public class OrderServiceTest extends TestCase {
         String id = template.requestBody("http://localhost:8080/orders?" + auth, xml, String.class);
         assertNotNull(id);
 
-        LOG.info("Created new order with id " + id);
+        LOG.info("Created new order with id {}", id);
 
         // should create a new order with id 4 (as 3 was created in the previous test method)
         assertEquals("4", id);

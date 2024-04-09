@@ -1,5 +1,7 @@
 package camelinaction;
 
+import com.sun.org.slf4j.internal.Logger;
+import com.sun.org.slf4j.internal.LoggerFactory;
 import org.apache.camel.BeanInject;
 import org.apache.camel.CamelContext;
 import org.apache.camel.Handler;

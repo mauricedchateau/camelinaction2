@@ -33,7 +33,7 @@ public class OrderServiceTest extends CamelTestSupport {
         String id = template.requestBody("http://localhost:8080/orders", json, String.class);
         assertNotNull(id);
 
-        log.info("Created new order with id " + id);
+        log.info("Created new order with id {}", id);
 
         // should create a new order with id 3 (json format so its enclosed in quotes)
         assertEquals("\"3\"", id);
@@ -49,7 +49,7 @@ public class OrderServiceTest extends CamelTestSupport {
         String id = template.requestBody("http://localhost:8080/orders", json, String.class);
         assertNotNull(id);
 
-        log.info("Created new order with id " + id);
+        log.info("Created new order with id {}", id);
 
         // should create a new order with id 3 (json format so its enclosed in quotes)
         assertEquals("\"3\"", id);

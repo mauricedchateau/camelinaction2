@@ -51,7 +51,7 @@ public class RestOrderServiceTest extends Assert {
         String id = template.requestBodyAndHeaders("restlet:http://localhost:8080/orders?restletMethod=POST", json, headers, String.class);
         assertNotNull(id);
 
-        LOG.info("Created new order with id " + id);
+        LOG.info("Created new order with id {}", id);
     }
 
     @Test
@@ -67,7 +67,7 @@ public class RestOrderServiceTest extends Assert {
         String id = template.requestBodyAndHeaders("restlet:http://localhost:8080/orders?restletMethod=POST", json, headers, String.class);
         assertNotNull(id);
 
-        LOG.info("Created new order with id " + id);
+        LOG.info("Created new order with id {}", id);
 
         // use restlet component to get the order
         String response = template.requestBodyAndHeader("restlet:http://localhost:8080/orders/" + id + "?restletMethod=GET", null, "Accept", "application/json", String.class);

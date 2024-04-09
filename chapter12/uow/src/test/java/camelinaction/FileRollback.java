@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
  */
 public class FileRollback implements Synchronization {
 
-    private static Logger LOG = LoggerFactory.getLogger(FileRollback.class);
+    private static final Logger LOG = LoggerFactory.getLogger(FileRollback.class);
 
     public void onComplete(Exchange exchange) {
         // this method is invoked when the Exchange completed with no failure

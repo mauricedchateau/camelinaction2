@@ -38,7 +38,7 @@ public class OrderServiceTest {
         String id = template.requestBody("http4://localhost:8080/api/orders", json, String.class);
         assertNotNull(id);
 
-        LOG.info("Created new order with id " + id);
+        LOG.info("Created new order with id {}", id);
 
         // should create a new order with id 3 or 4
         assertTrue(id.equals("3") || id.equals("4"));
@@ -54,7 +54,7 @@ public class OrderServiceTest {
         String id = template.requestBody("http4://localhost:8080/api/orders", json, String.class);
         assertNotNull(id);
 
-        LOG.info("Created new order with id " + id);
+        LOG.info("Created new order with id {}", id);
 
         // should create a new order with id 3 or 4
         assertTrue(id.equals("3") || id.equals("4"));

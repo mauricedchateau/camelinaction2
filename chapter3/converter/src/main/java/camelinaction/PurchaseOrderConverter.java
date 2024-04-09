@@ -1,12 +1,13 @@
 package camelinaction;
 
-import java.math.BigDecimal;
-
 import org.apache.camel.Converter;
 import org.apache.camel.Exchange;
 import org.apache.camel.TypeConverter;
 
-@Converter
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
+@Converter(generateLoader = true)
 public final class PurchaseOrderConverter {
 
     @Converter
@@ -25,8 +26,7 @@ public final class PurchaseOrderConverter {
         String s2 = s.substring(10, 20).trim();
         String s3 = s.substring(20).trim();
 
-        BigDecimal price = new BigDecimal(s2);
-        price.setScale(2);
+        BigDecimal price = new BigDecimal(s2).setScale(2, RoundingMode.HALF_UP);
 
         Integer amount = converter.convertTo(Integer.class, s3);
 

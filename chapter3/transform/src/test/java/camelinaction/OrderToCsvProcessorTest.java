@@ -1,10 +1,13 @@
 package camelinaction;
 
+import org.apache.camel.builder.RouteBuilder;
+import org.apache.camel.test.junit5.CamelTestSupport;
+import org.junit.jupiter.api.Test;
+
 import java.io.File;
 
-import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.test.junit4.CamelTestSupport;
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class OrderToCsvProcessorTest extends CamelTestSupport {
 
@@ -15,7 +18,7 @@ public class OrderToCsvProcessorTest extends CamelTestSupport {
         template.sendBodyAndHeader("direct:start", inhouse, "Date", "20091208");
 
         File file = new File("target/orders/received/report-20091208.csv");
-        assertTrue("File should exist", file.exists());
+        assertTrue(file.exists(), "File should exist");
 
         // compare the expected file content
         String body = context.getTypeConverter().convertTo(String.class, file);

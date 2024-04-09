@@ -49,7 +49,7 @@ public class RestOrderServiceTest extends CamelTestSupport {
         String id = template.requestBodyAndHeader("restlet:http://localhost:8080/orders?restletMethod=POST", xml, Exchange.CONTENT_TYPE, "application/xml", String.class);
         assertNotNull(id);
 
-        log.info("Created new order with id " + id);
+        log.info("Created new order with id {}", id);
 
         // should create a new order with id 1
         assertEquals("1", id);
@@ -71,7 +71,7 @@ public class RestOrderServiceTest extends CamelTestSupport {
         String id = template.requestBodyAndHeader("restlet:http://localhost:8080/orders?restletMethod=POST", xml, Exchange.CONTENT_TYPE, "application/xml", String.class);
         assertNotNull(id);
 
-        log.info("Created new order with id " + id);
+        log.info("Created new order with id {}", id);
 
         // should create a new order with id 1
         assertEquals("1", id);
