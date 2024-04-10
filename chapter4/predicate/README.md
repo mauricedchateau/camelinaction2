@@ -7,4 +7,6 @@ This directory holds examples how to use beans as predicates during routing
 
 This example can be run using:
 
+    mvn test -Dtest=JsonPredicateTest
+    mvn test -Dtest=SpringJsonPredicateTest
     mvn test -Dtest=CompoundPredicateTest

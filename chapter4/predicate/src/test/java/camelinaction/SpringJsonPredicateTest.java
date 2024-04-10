@@ -1,7 +1,10 @@
 package camelinaction;
 
 import org.apache.camel.Exchange;
+import org.apache.camel.component.mock.MockEndpoint;
+import org.apache.camel.test.junit5.TestSupport;
 import org.apache.camel.test.spring.junit5.CamelSpringTestSupport;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.support.AbstractXmlApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -16,9 +19,9 @@ public class SpringJsonPredicateTest extends CamelSpringTestSupport {
         return new ClassPathXmlApplicationContext("camelinaction/jsonPredicate.xml");
     }
 
-    @Override
+    @BeforeEach
     public void setUp() throws Exception {
-        deleteDirectory("target/order");
+        TestSupport.deleteDirectory("target/order");
         super.setUp();
     }
 

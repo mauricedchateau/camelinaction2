@@ -7,7 +7,7 @@ import org.apache.camel.component.reactive.streams.ReactiveStreamsDiscardedExcep
 import org.apache.camel.component.reactive.streams.api.CamelReactiveStreams;
 import org.apache.camel.component.reactive.streams.api.CamelReactiveStreamsService;
 import org.apache.camel.impl.ThrottlingInflightRoutePolicy;
-import org.apache.camel.test.junit4.CamelTestSupport;
+import org.apache.camel.test.junit5.CamelTestSupport;
 import org.junit.jupiter.api.Test;
 import org.reactivestreams.Publisher;
 

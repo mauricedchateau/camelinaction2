@@ -1,7 +1,6 @@
 package camelinaction;
 
-import javax.inject.Singleton;
-
+import jakarta.enterprise.context.ApplicationScoped;
 import org.apache.camel.Endpoint;
 import org.apache.camel.EndpointInject;
 import org.apache.camel.builder.RouteBuilder;
@@ -9,15 +8,15 @@ import org.apache.camel.builder.RouteBuilder;
 /**
  * Camel routes
  */
-@Singleton
+@ApplicationScoped
 public class HelloRoute extends RouteBuilder {
 
     // we can inject Camel endpoints (or also just use the uris directly in the Java DSL below)
 
-    @EndpointInject(uri = "timer:foo?period=5s")
+    @EndpointInject("timer:foo?period=5s")
     private Endpoint input;
 
-    @EndpointInject(uri = "log:output")
+    @EndpointInject("log:output")
     private Endpoint output;
 
     @Override

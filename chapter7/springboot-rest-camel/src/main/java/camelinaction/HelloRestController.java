@@ -16,7 +16,7 @@ public class HelloRestController {
     /**
      * Inject Camel producer to use camel-geocoder to find location where we are
      */
-    @EndpointInject(uri = "geocoder:address:current")
+    @EndpointInject("geocoder:address:current")
     private FluentProducerTemplate producer;
 
     /**

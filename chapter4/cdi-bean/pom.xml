@@ -20,41 +20,16 @@
       <artifactId>camel-core</artifactId>
     </dependency>
 
-    <dependency>
-      <groupId>org.apache.camel</groupId>
-      <artifactId>camel-cdi</artifactId>
-    </dependency>
-
-    <!-- cdi api -->
-    <dependency>
-      <groupId>javax.enterprise</groupId>
-      <artifactId>cdi-api</artifactId>
-      <version>1.2</version>
-      <scope>provided</scope>
-    </dependency>
-
     <!-- use log4j as logger -->
     <dependency>
       <groupId>org.apache.logging.log4j</groupId>
       <artifactId>log4j-slf4j2-impl</artifactId>
     </dependency>
 
-    <!-- need to use a CDI container such as JBoss Weld -->
-    <!-- lets use weld for CDI -->
+    <!-- need to use a CDI container such as Quarkus -->
     <dependency>
-      <groupId>org.jboss.weld.se</groupId>
-      <artifactId>weld-se</artifactId>
-      <version>${weld-version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.jboss.weld</groupId>
-      <artifactId>weld-core</artifactId>
-      <version>${weld-version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.deltaspike.cdictrl</groupId>
-      <artifactId>deltaspike-cdictrl-weld</artifactId>
-      <version>${deltaspike-version}</version>
+      <groupId>org.apache.camel.quarkus</groupId>
+      <artifactId>camel-quarkus-bean</artifactId>
     </dependency>
 
   </dependencies>
@@ -63,12 +38,19 @@
 
     <plugins>
 
-      <!-- to run the example using mvn camel:run -->
+      <!-- to run the example using mvn exec:exec -->
       <plugin>
-        <groupId>org.apache.camel</groupId>
-        <artifactId>camel-maven-plugin</artifactId>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
         <configuration>
-          <useCDI>true</useCDI>
+          <executable>java</executable>
+          <arguments>
+            <argument>-classpath</argument>
+            <!-- automatically creates the classpath using all project dependencies,
+                 also adding the project build directory -->
+            <classpath/>
+            <argument>camelinaction.Main</argument>
+          </arguments>
         </configuration>
       </plugin>
     </plugins>

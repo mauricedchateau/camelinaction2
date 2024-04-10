@@ -18,7 +18,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  */
 public class SpringSecuringConfigTest extends CamelSpringTestSupport {
 
-    @EndpointInject(uri = "file:target/inbox")
+    @EndpointInject("file:target/inbox")
     private ProducerTemplate inbox;
 
     public void setUp() throws Exception {

@@ -41,12 +41,6 @@
       <artifactId>log4j-slf4j2-impl</artifactId>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-log4j12</artifactId>
-      <scope>test</scope>
-    </dependency>
-
     <!-- to allow using @Inject in the unit tests -->
     <dependency>
       <groupId>javax.inject</groupId>

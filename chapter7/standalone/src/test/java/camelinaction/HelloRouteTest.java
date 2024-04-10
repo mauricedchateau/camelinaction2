@@ -1,7 +1,7 @@
 package camelinaction;
 
 import org.apache.camel.RoutesBuilder;
-import org.apache.camel.test.junit4.CamelTestSupport;
+import org.apache.camel.test.junit5.CamelTestSupport;
 import org.junit.jupiter.api.Test;
 
 /**

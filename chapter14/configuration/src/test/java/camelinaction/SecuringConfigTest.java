@@ -9,12 +9,12 @@ import org.apache.camel.ProducerTemplate;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.jasypt.JasyptPropertiesParser;
 import org.apache.camel.component.properties.PropertiesComponent;
-import org.apache.camel.test.junit4.CamelTestSupport;
+import org.apache.camel.test.junit5.CamelTestSupport;
 import org.junit.jupiter.api.Test;
 
 public class SecuringConfigTest extends CamelTestSupport {
 
-    @EndpointInject(uri = "file:target/inbox")
+    @EndpointInject("file:target/inbox")
     private ProducerTemplate inbox;
 
     private FtpServerBean ftp = new FtpServerBean();

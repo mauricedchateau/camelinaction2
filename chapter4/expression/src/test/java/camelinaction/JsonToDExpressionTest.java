@@ -2,7 +2,10 @@ package camelinaction;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.test.junit4.CamelTestSupport;
+import org.apache.camel.component.mock.MockEndpoint;
+import org.apache.camel.test.junit5.CamelTestSupport;
+import org.apache.camel.test.junit5.TestSupport;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -10,9 +13,9 @@ import org.junit.jupiter.api.Test;
  */
 public class JsonToDExpressionTest extends CamelTestSupport {
 
-    @Override
+    @BeforeEach
     public void setUp() throws Exception {
-        deleteDirectory("target/order");
+        TestSupport.deleteDirectory("target/order");
         super.setUp();
     }
 

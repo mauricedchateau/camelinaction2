@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class GeoRestController {
 
-    @EndpointInject(uri = "log:foo") // TODO: fix me in future Camel release
+    @EndpointInject("log:foo") // TODO: fix me in future Camel release
     private FluentProducerTemplate template;
 
     @RequestMapping("/country/{city}")

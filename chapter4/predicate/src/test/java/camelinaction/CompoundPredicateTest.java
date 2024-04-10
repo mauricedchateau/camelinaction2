@@ -4,11 +4,14 @@ import org.apache.camel.CamelExecutionException;
 import org.apache.camel.Predicate;
 import org.apache.camel.builder.PredicateBuilder;
 import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.processor.validation.PredicateValidationException;
-import org.apache.camel.test.junit4.CamelTestSupport;
+import org.apache.camel.component.mock.MockEndpoint;
+import org.apache.camel.support.processor.PredicateValidationException;
+import org.apache.camel.test.junit5.CamelTestSupport;
 import org.junit.jupiter.api.Test;
 
 import static org.apache.camel.builder.PredicateBuilder.not;
+import static org.apache.camel.test.junit5.TestSupport.assertIsInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class CompoundPredicateTest extends CamelTestSupport {
 
@@ -29,15 +32,17 @@ public class CompoundPredicateTest extends CamelTestSupport {
      * We expect this test to fail with an exception. But want to let Camel print the exception on the console
      * so you can see the exception message, and Camel printing the compound predicate that failed
      */
-    @Test(expected = PredicateValidationException.class)
+    @Test()
     public void testCompoundPredicateInvalid() throws Exception {
-        try {
-            String xml = "<book><title>Camel in Action</title><user>Claus</user></book>";
-            template.sendBodyAndHeader("direct:start", xml, "source", "batch");
-        } catch (CamelExecutionException e) {
-            PredicateValidationException pve = assertIsInstanceOf(PredicateValidationException.class, e.getCause());
-            throw pve;
-        }
+        assertThrows(PredicateValidationException.class, () -> {
+            try {
+                String xml = "<book><title>Camel in Action</title><user>Claus</user></book>";
+                template.sendBodyAndHeader("direct:start", xml, "source", "batch");
+            } catch (CamelExecutionException e) {
+                PredicateValidationException pve = assertIsInstanceOf(PredicateValidationException.class, e.getCause());
+                throw pve;
+            }
+        });
     }
 
     public static boolean isAuthor(String xml) {

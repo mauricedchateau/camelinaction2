@@ -1,31 +1,31 @@
 package camelinaction;
 
-import junit.framework.TestCase;
 import org.apache.camel.CamelContext;
 import org.apache.camel.ProducerTemplate;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.impl.DefaultCamelContext;
-import org.apache.camel.impl.JndiRegistry;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 /**
- * Using {@link org.apache.camel.impl.JndiRegistry} as the Camel {@link org.apache.camel.spi.Registry}
+ * Using <s>{@link org.apache.camel.impl.JndiRegistry}</s> the default Camel {@link org.apache.camel.spi.Registry}
  * to register beans and let Camel lookup them to be used in routes.
  */
-public class JndiRegistryTest extends TestCase {
+class DefaultRegistryTest {
 
     private CamelContext context;
     private ProducerTemplate template;
 
-    @Override
+    @BeforeEach
     protected void setUp() throws Exception {
-        // create the registry to be JndiRegistry in standalone mode
-        JndiRegistry registry = new JndiRegistry(true);
-        // register our HelloBean under the name helloBean
-        registry.bind("helloBean", new HelloBean());
+        // No explicit registry given.
+        context = new DefaultCamelContext();
 
-        // tell Camel to use our JndiRegistry
-        context = new DefaultCamelContext(registry);
+        // register our HelloBean under the name helloBean in the default registry
+        context.getRegistry().bind("helloBean", new HelloBean());
 
         // create a producer template to use for testing
         template = context.createProducerTemplate();
@@ -40,7 +40,7 @@ public class JndiRegistryTest extends TestCase {
         context.start();
     }
 
-    @Override
+    @AfterEach
     protected void tearDown() throws Exception {
         // cleanup resources after test
         template.stop();
