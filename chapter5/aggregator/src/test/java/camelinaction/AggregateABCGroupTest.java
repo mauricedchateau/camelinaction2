@@ -1,13 +1,15 @@
 package camelinaction;
 
-import java.util.List;
-
 import org.apache.camel.Exchange;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.processor.aggregate.GroupedExchangeAggregationStrategy;
 import org.apache.camel.test.junit5.CamelTestSupport;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * The ABC example for using the Aggregator EIP.
@@ -28,10 +30,7 @@ public class AggregateABCGroupTest extends CamelTestSupport {
         // one message expected
         mock.expectedMessageCount(1);
         // As the fix of CAMEL-6557, the message body is not empty anymore
-        // should not have a body
-        //mock.message(0).body().isNull();
-        // but have it stored in a property as a List
-        mock.message(0).exchangeProperty(Exchange.GROUPED_EXCHANGE).isInstanceOf(List.class);
+        mock.message(0).body().isInstanceOf(List.class);
 
         template.sendBodyAndHeader("direct:start", "A", "myId", 1);
         template.sendBodyAndHeader("direct:start", "B", "myId", 1);
@@ -44,17 +43,17 @@ public class AggregateABCGroupTest extends CamelTestSupport {
         Exchange exchange = mock.getExchanges().get(0);
 
         // retrieve the List which contains the arrived exchanges
-        List list = exchange.getProperty(Exchange.GROUPED_EXCHANGE, List.class);
-        assertEquals("Should contain the 3 arrived exchanges", 3, list.size());
+        List<Exchange> list = exchange.getMessage().getBody(List.class);
+        assertEquals(3, list.size(), "Should contain the 3 arrived exchanges");
 
         // assert the 3 exchanges are in order and contains the correct body
-        Exchange a = (Exchange) list.get(0);
+        Exchange a = list.get(0);
         assertEquals("A", a.getIn().getBody());
 
-        Exchange b = (Exchange) list.get(1);
+        Exchange b = list.get(1);
         assertEquals("B", b.getIn().getBody());
 
-        Exchange c = (Exchange) list.get(2);
+        Exchange c = list.get(2);
         assertEquals("C", c.getIn().getBody());
     }
 

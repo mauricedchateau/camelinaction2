@@ -1,6 +1,8 @@
 package camelinaction;
 
 import org.apache.camel.LoggingLevel;
+import org.apache.camel.builder.AdviceWith;
+import org.apache.camel.builder.AdviceWithRouteBuilder;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit5.CamelTestSupport;
@@ -22,7 +24,7 @@ public class FailoverInheritErrorHandlerLoadBalancerTest extends CamelTestSuppor
     @Test
     public void testLoadBalancer() throws Exception {
         // simulate error when sending to service A
-        context.getRouteDefinition("start").adviceWith(context, new RouteBuilder() {
+        AdviceWith.adviceWith("start", context, new AdviceWithRouteBuilder() {
             @Override
             public void configure() throws Exception {
                 interceptSendToEndpoint("direct:a")

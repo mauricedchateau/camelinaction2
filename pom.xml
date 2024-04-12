@@ -74,8 +74,8 @@
     <log4j-version>2.23.1</log4j-version>
     <maven-bundle-plugin-version>5.1.9</maven-bundle-plugin-version>
     <mock-javamail-version>1.9</mock-javamail-version>
-    <quarkus.platform.version>3.9.2</quarkus.platform.version>
-    <quarkus.version>3.9.0</quarkus.version>
+    <quarkus.platform.version>3.9.3</quarkus.platform.version>
+    <camel-quarkus.version>3.9.0</camel-quarkus.version>
     <slf4j-version>2.0.12</slf4j-version>
     <spring-version>6.1.5</spring-version>
     <spring-boot-version>3.2.4</spring-boot-version>
@@ -239,6 +239,12 @@
         <version>${camel-version}</version>
       </dependency>
 
+      <dependency>
+        <groupId>org.apache.camel</groupId>
+        <artifactId>camel-microprofile-fault-tolerance</artifactId>
+        <version>${camel-version}</version>
+      </dependency>
+
       <!-- ActiveMQ -->
       <dependency>
         <groupId>org.apache.activemq</groupId>
@@ -380,7 +386,7 @@
       <dependency>
         <groupId>org.apache.camel.quarkus</groupId>
         <artifactId>camel-quarkus-bean</artifactId>
-        <version>${quarkus.version}</version>
+        <version>${camel-quarkus.version}</version>
       </dependency>
 
       <!-- Java FTP server -->

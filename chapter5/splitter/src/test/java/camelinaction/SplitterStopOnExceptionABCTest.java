@@ -5,7 +5,11 @@ import org.apache.camel.CamelExecutionException;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.test.junit5.CamelTestSupport;
+import org.apache.camel.test.junit5.TestSupport;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 /**
  * The Splitter using its build in Aggregator example.
@@ -34,8 +38,8 @@ public class SplitterStopOnExceptionABCTest extends CamelTestSupport {
             template.sendBody("direct:start", "A,F,C");
             fail("Should have thrown an exception");
         } catch (CamelExecutionException e) {
-            CamelExchangeException cause = assertIsInstanceOf(CamelExchangeException.class, e.getCause());
-            IllegalArgumentException iae = assertIsInstanceOf(IllegalArgumentException.class, cause.getCause());
+            CamelExchangeException cause = TestSupport.assertIsInstanceOf(CamelExchangeException.class, e.getCause());
+            IllegalArgumentException iae = TestSupport.assertIsInstanceOf(IllegalArgumentException.class, cause.getCause());
             assertEquals("Key not a known word F", iae.getMessage());
         }
 

@@ -3,10 +3,14 @@ package camelinaction;
 import org.apache.camel.CamelExchangeException;
 import org.apache.camel.CamelExecutionException;
 import org.apache.camel.component.mock.MockEndpoint;
+import org.apache.camel.test.junit5.TestSupport;
 import org.apache.camel.test.spring.junit5.CamelSpringTestSupport;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.support.AbstractXmlApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 /**
  * The Spring based example of {@link camelinaction.SplitterStopOnExceptionABCTest}.
@@ -34,8 +38,8 @@ public class SpringSplitterStopOnExceptionABCTest extends CamelSpringTestSupport
             template.sendBody("direct:start", "A,F,C");
             fail("Should have thrown an exception");
         } catch (CamelExecutionException e) {
-            CamelExchangeException cause = assertIsInstanceOf(CamelExchangeException.class, e.getCause());
-            IllegalArgumentException iae = assertIsInstanceOf(IllegalArgumentException.class, cause.getCause());
+            CamelExchangeException cause = TestSupport.assertIsInstanceOf(CamelExchangeException.class, e.getCause());
+            IllegalArgumentException iae = TestSupport.assertIsInstanceOf(IllegalArgumentException.class, cause.getCause());
             assertEquals("Key not a known word F", iae.getMessage());
         }
 

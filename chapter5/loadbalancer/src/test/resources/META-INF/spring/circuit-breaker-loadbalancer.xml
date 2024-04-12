@@ -14,12 +14,10 @@
 
         <route>
             <from uri="direct:start"/>
-            <loadBalance>
-                <circuitBreaker threshold="2" halfOpenAfter="2000">
-                    <exception>java.lang.Exception</exception>
-                </circuitBreaker>
+            <circuitBreaker>
+                <faultToleranceConfiguration requestVolumeThreshold="2" delay="2000"/>
                 <to uri="direct:a"/>
-            </loadBalance>
+            </circuitBreaker>
         </route>
 
         <route>

@@ -54,8 +54,8 @@ public class CircuitBreakerLoadBalancerTest extends CamelTestSupport {
             @Override
             public void configure() throws Exception {
                 from("direct:start")
-                    .loadBalance()
-                        .circuitBreaker(2, 2000L, Exception.class)
+                    .circuitBreaker()
+                        .faultToleranceConfiguration().requestVolumeThreshold(2).delay(2000L).end()
                         .to("direct:a");
 
                 from("direct:a")

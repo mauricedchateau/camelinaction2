@@ -3,10 +3,13 @@ package camelinaction;
 import org.apache.camel.CamelExecutionException;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.processor.aggregate.ClosedCorrelationKeyException;
+import org.apache.camel.test.junit5.TestSupport;
 import org.apache.camel.test.spring.junit5.CamelSpringTestSupport;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.support.AbstractXmlApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * The sample example as {@link AggregateABCCloseTest} but using Spring XML instead.
@@ -43,7 +46,7 @@ public class SpringAggregateABCCloseTest extends CamelSpringTestSupport {
         try {
             template.sendBodyAndHeader("direct:start", "A2", "myId", 1);
         } catch (CamelExecutionException e) {
-            ClosedCorrelationKeyException cause = assertIsInstanceOf(ClosedCorrelationKeyException.class, e.getCause());
+            ClosedCorrelationKeyException cause = TestSupport.assertIsInstanceOf(ClosedCorrelationKeyException.class, e.getCause());
             assertEquals("1", cause.getCorrelationKey());
         }
 

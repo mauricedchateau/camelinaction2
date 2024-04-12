@@ -1,13 +1,15 @@
 package camelinaction;
 
-import java.util.concurrent.TimeUnit;
-
 import org.apache.camel.Exchange;
 import org.apache.camel.component.mock.MockEndpoint;
+import org.apache.camel.test.junit5.TestSupport;
 import org.apache.camel.test.spring.junit5.CamelSpringTestSupport;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.support.AbstractXmlApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * The sample example as {@link AggregateABCRecoverTest} but using Spring XML instead.
@@ -21,10 +23,10 @@ public class SpringAggregateABCRecoverTest extends CamelSpringTestSupport {
         return new ClassPathXmlApplicationContext("META-INF/spring/aggregate-abc-recover.xml");
     }
 
-    @Override
+    @BeforeEach
     public void setUp() throws Exception {
         // ensure we use a fresh repo each time by deleting the data directory
-        deleteDirectory("data");
+        TestSupport.deleteDirectory("data");
         super.setUp();
     }
 
@@ -54,7 +56,7 @@ public class SpringAggregateABCRecoverTest extends CamelSpringTestSupport {
         template.sendBodyAndHeader("direct:start", "C", "myId", 1);
 
         // wait for 20 seconds as this test takes some time
-        assertMockEndpointsSatisfied(20, TimeUnit.SECONDS);
+        MockEndpoint.assertIsSatisfied(20, TimeUnit.SECONDS);
     }
 
 }

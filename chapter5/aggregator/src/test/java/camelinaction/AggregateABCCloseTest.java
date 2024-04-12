@@ -5,7 +5,10 @@ import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
 import org.apache.camel.processor.aggregate.ClosedCorrelationKeyException;
 import org.apache.camel.test.junit5.CamelTestSupport;
+import org.apache.camel.test.junit5.TestSupport;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * The ABC example for using the Aggregator EIP.
@@ -45,7 +48,7 @@ public class AggregateABCCloseTest extends CamelTestSupport {
         try {
             template.sendBodyAndHeader("direct:start", "A2", "myId", 1);
         } catch (CamelExecutionException e) {
-            ClosedCorrelationKeyException cause = assertIsInstanceOf(ClosedCorrelationKeyException.class, e.getCause());
+            ClosedCorrelationKeyException cause = TestSupport.assertIsInstanceOf(ClosedCorrelationKeyException.class, e.getCause());
             assertEquals("1", cause.getCorrelationKey());
         }
 
