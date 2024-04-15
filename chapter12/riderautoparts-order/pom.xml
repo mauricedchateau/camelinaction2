@@ -41,12 +41,6 @@
       <artifactId>log4j-slf4j2-impl</artifactId>
     </dependency>
 
-    <!-- cxf using slf4j -->
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-api</artifactId>
-    </dependency>
-
     <!-- using Jetty with CXF when running it with camel:run -->
     <dependency>
       <groupId>org.apache.cxf</groupId>
